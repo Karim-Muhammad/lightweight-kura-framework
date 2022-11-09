@@ -1,0 +1,1556 @@
+@charset "UTF-8";
+/*
+      you maybe see .sass NOT .scss
+      but there is different in Syntax
+      so we will use .scss
+
+      in .scss you can type plain css style is OK
+      but you cannot hood .sass file in your html, borwser can understand CSS only to do CSSOM
+      so we need something to compile .sass styles into .css style
+
+      there are many options to that
+      more easiest ways is installing compile sass extention in VSC or Download on Desktop
+      and using "Command line" to watch .sass and compile into .css
+
+      but there another way we can use, it can do thats auto, instead of me
+      It is "Task runner" which called "Gulpjs"
+      which also has more features which not found in Sass Compiler Exention
+
+      what we need install it by npm
+      - `npm install gulp gulp-sass sass --save-dev`
+      what means these?
+      gulp -> task runner which do compile files
+      gulp-sass -> plugin of gulp to do compiling sass files specially
+      sass -> which gulp use it under the hood to compile task
+      --save-dev -> means store all these packages in 'packages.json' as dev dependencies
+
+      before all of that, install "gulp-cli"
+      - `npm install -g gulp-cli`
+
+      and create "gulpfile.js" and do some functions to do some actions
+*/
+/*
+  -> using file contains default values that you maybe want to change it
+  -> Variables defined with !default can be configured when loading a module with the @use rule.
+  Sass libraries often use !default variables to allow their users to configure the library’s CSS.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+/* Variables */ /* Variables */
+/*  Font  */
+/*  Spacing  & Utilities  */
+/* Radius */
+/* Gradient */
+/*  Background  */
+/*  Shadow  */
+/* Variations */
+/*
+  Why we name "base-[name]"?
+    - because we can manipluate these values later on, to give us a large padding for example or large margin or less
+
+*/
+/* Base & Layout */
+/* Media For Small Devices */
+/* Media For Medium Devices */
+@media (min-width: 0px) {
+  .responsive-text {
+    background-color: red;
+    font-size: 10px;
+  }
+}
+@media (min-width: 480px) {
+  .responsive-text {
+    background-color: peachpuff;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 500px) {
+  .responsive-text {
+    background-color: black;
+  }
+}
+@media (min-width: 720px) {
+  .responsive-text {
+    background-color: lightgreen;
+    font-size: 2rem;
+  }
+}
+@media (min-width: 960px) {
+  .responsive-text {
+    background-color: aquamarine;
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  .responsive-text {
+    background-color: cadetblue;
+    font-size: 3.5rem;
+  }
+}
+
+/*
+  @content
+    when you include mixin uou write styles wihtin this mixin
+    so your code will replaced with @content
+
+    you can include mixin with many ways
+    1- @include nameMixin(arg) // if it need args
+    2- @nameMixin {
+      // code 
+    }
+
+*/
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.row.grow > [class*=col] {
+  flex-grow: 1;
+}
+
+.justify__center {
+  justify-content: center;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+/* Column in Extra Small Screen */
+@media (min-width: 0px) {
+  .col-12-xs {
+    width: 100%;
+  }
+}
+/* Column in Small Screen */
+@media (min-width: 480px) {
+  .col-6-sm {
+    width: 50%;
+  }
+  .col-12-sm {
+    width: 100%;
+  }
+}
+/* Column in Medium Screen */
+@media (min-width: 720px) {
+  .col-6-md {
+    width: 50%;
+  }
+}
+/* Column in Large Screen */
+@media (min-width: 960px) {
+  .col-4-lg {
+    width: 33.3333333333%;
+  }
+  .col-5-lg {
+    width: 41.6666666667%;
+  }
+  .col-6-lg {
+    width: 50%;
+  }
+}
+/* Component */
+.pop {
+  padding: 7px 13px;
+  border-radius: 1.3rem;
+}
+
+.card, .card-round {
+  padding: 1.5rem 0.975rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card, .card-round {
+  /*
+  @include xs {
+    font-size: math.div($font-size-lg, 2) !important;
+  }
+  @include sm {
+    font-size: $font-size-sm !important;
+  }
+  @include md {
+    font-size: $font-size-md !important;
+  }
+  @include lg {
+    font-size: $font-size-lg !important;
+  }
+  */
+}
+.card img, .card-round img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+.card h1, .card-round h1,
+.card h2,
+.card-round h2,
+.card h3,
+.card-round h3,
+.card h4,
+.card-round h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #118ab2;
+}
+.card p, .card-round p,
+.card .card-body,
+.card-round .card-body {
+  color: gray;
+  margin: 10px 0;
+}
+.card a, .card-round a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #1167b2;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+/*
+@debug "Hello, World";
+@debug math.div(10, 3);
+// @debug math.max(1px, 9px, 20px 40px);
+@debug math.max(1, 9, 20, 40);
+@debug math.floor(2.9);
+*/
+.card-round {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-radius: 1.3rem;
+  border: 1px solid gray;
+}
+.card-round .card-body {
+  flex: 1;
+}
+@media (min-width: 480px) {
+  .card-round {
+    flex-direction: column;
+  }
+  .card-round .img-wrapper {
+    width: 100%;
+  }
+}
+@media (min-width: 720px) {
+  .card-round {
+    flex-direction: row;
+  }
+  .card-round .img-wrapper {
+    width: 40%;
+    border-radius: 50%;
+  }
+  .card-round .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+}
+
+/*
+      Way for group of punch of css properties which it could be included in other files 
+*/
+.btn {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #118ab2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-primary:hover {
+  background-color: #139cc9;
+}
+
+.btn-outline-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #118ab2;
+  color: #118ab2;
+}
+.btn-outline-primary:hover {
+  background-color: #118ab2;
+  color: #fff;
+}
+
+.btn-complem-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #118ab2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: #fad5c8;
+}
+.btn-complem-primary:hover {
+  color: #118ab2;
+  background-color: #fad5c8;
+}
+
+.btn-error {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ee3137;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-error:hover {
+  background-color: #f0494e;
+}
+
+.btn-outline-error {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #ee3137;
+  color: #ee3137;
+}
+.btn-outline-error:hover {
+  background-color: #ee3137;
+  color: #fff;
+}
+
+.btn-info {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #06d6a0;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-info:hover {
+  background-color: #07efb3;
+}
+
+.btn-outline-info {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #06d6a0;
+  color: #06d6a0;
+}
+.btn-outline-info:hover {
+  background-color: #06d6a0;
+  color: #fff;
+}
+
+.btn-complem-green {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #19e635;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-green:hover {
+  color: #19e635;
+  background-color: white;
+}
+
+.btn-orange {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffa600;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-orange:hover {
+  background-color: #ffaf1a;
+}
+
+.btn-outline-orange {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #ffa600;
+  color: #ffa600;
+}
+.btn-outline-orange:hover {
+  background-color: #ffa600;
+  color: #fff;
+}
+
+.navbar .container, .navbar .list, .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar .site-title {
+  font-size: 2rem;
+}
+.navbar .list {
+  padding: 0;
+}
+.navbar .list li {
+  text-transform: capitalize;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.navbar .list li:hover {
+  letter-spacing: 1.3px;
+}
+.heading .heading-title::before, .heading .heading-title::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: #118ab2;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.heading {
+  padding: 20px;
+  width: 100%;
+}
+.heading .heading-title {
+  margin: 0 auto;
+  padding: 10px 20px;
+  width: fit-content;
+  font-size: 1.2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+}
+.heading .heading-title::after {
+  right: -20px;
+}
+.heading .heading-title::before {
+  left: -20px;
+}
+.heading .heading-title:hover {
+  border-radius: 1.4rem;
+}
+.heading .heading-title:hover::after {
+  right: 0;
+  background-color: white;
+}
+.heading .heading-title:hover::before {
+  left: 0;
+  background-color: white;
+}
+
+/* Utlity */
+/*
+      this file for utility colors, text color, background color
+*/
+/*
+div {
+  &[class=primary-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.primary {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.primary {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-primary {
+  color: #118ab2;
+}
+div .text-primary:hover {
+  color: dark(#118ab2, 70);
+}
+
+.bg-primary {
+  background-color: #118ab2;
+}
+.bg-primary:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+.text-primary-light-7 {
+  color: #86c3d8;
+}
+
+/* -8- */
+
+/* -9- */
+
+.bg-primary-light-9 {
+  background-color: #a7d4e3;
+}
+
+/*
+div {
+  &[class=secondary-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.secondary {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.secondary {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-secondary {
+  color: gray;
+}
+div .text-secondary:hover {
+  color: dark(gray, 70);
+}
+
+.bg-secondary {
+  background-color: gray;
+}
+.bg-secondary:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+
+/* -2- */
+
+.bg-secondary-light-2 {
+  background-color: #929292;
+}
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=error-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.error {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.error {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-error {
+  color: #ee3137;
+}
+div .text-error:hover {
+  color: dark(#ee3137, 70);
+}
+
+.bg-error {
+  background-color: #ee3137;
+}
+.bg-error:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=info-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.info {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.info {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-info {
+  color: #06d6a0;
+}
+div .text-info:hover {
+  color: dark(#06d6a0, 70);
+}
+
+.bg-info {
+  background-color: #06d6a0;
+}
+.bg-info:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=notice-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.notice {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.notice {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+.bg-notice {
+  background-color: #fee440;
+}
+.bg-notice:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=danger-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.danger {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.danger {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=secure-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.secure {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.secure {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=calm-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.calm {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.calm {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=blue-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.blue {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.blue {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=red-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.red {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.red {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=yellow-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.yellow {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.yellow {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=green-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.green {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.green {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+.text-green-light-7 {
+  color: #8af298;
+}
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=orange-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.orange {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.orange {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=purple-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.purple {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.purple {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=gray-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.gray {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.gray {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+
+/* -1- */
+
+/* -2- */
+
+/* -3- */
+
+/* -4- */
+
+/* -5- */
+
+/* -6- */
+
+/* -7- */
+
+/* -8- */
+
+/* -9- */
+
+/*
+div {
+  &[class=black-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.black {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.black {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-black {
+  color: black;
+}
+div .text-black:hover {
+  color: dark(black, 70);
+}
+
+/*
+div {
+  &[class=white-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.white {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.white {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-white {
+  color: white;
+}
+div .text-white:hover {
+  color: dark(white, 70);
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.pt-2 {
+  padding-top: 1.5rem;
+}
+
+.pt-3 {
+  padding-top: 3rem;
+}
+
+.pt-5 {
+  padding-top: 6rem;
+}
+
+.pb-2 {
+  padding-bottom: 1.5rem;
+}
+
+.pb-3 {
+  padding-bottom: 3rem;
+}
+
+.pb-5 {
+  padding-bottom: 6rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mb-1 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-5 {
+  margin-bottom: 6rem;
+}
+
+.display-f {
+  display: flex;
+}
+
+.display-i-b {
+  display: inline-block;
+}
+
+.font-sm {
+  font-size: 1.35rem;
+}
+
+.font-xl {
+  font-size: 3rem;
+}
+
+.t-align-c {
+  text-align: center;
+}
+
+/* reset styles */
+* {
+  color: inherit;
+  margin: 0;
+}
+
+body {
+  font-family: Poppins;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 span {
+  color: #fa0;
+}
+
+.parent {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #efaeef;
+}
+.parent .son {
+  color: #aaa;
+}
+.parent .child {
+  color: #aaa;
+}
+
+/* Divs */
+.pops {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* How Compile these Files ?*/
+/*
+  _base use vairables, but in this files there is no declartion variables at all!
+  so how _base use these variables which not valid in wihtin file _base?
+
+  Try make @import "_base" first line?
+  Yeah, it will throw an Error, tell us the variables used not declared!
+  so how _base doesn't give us same error when it second line for example or after our framework?
+
+  because it compile step by step, and _base depend on previous statment
+  first execute "kura-framework" which contains "variables" then execute "_base"
+
+  so the order is matter(neccessary)
+
+
+  */
