@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scss</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <h3 class="site-title">Kura CSS</h3>
+      <p>a lightweight framework for projects</p>
+    </div>
+    <div class="container">
+      <!-- 
+
+            <h1>Hello, <span>World</span></h1>
+            <div class="parent">
+              I'm Parent
+              <div class="son">
+                I'm Son
+                <div class="child">I'm Child</div>
+              </div>
+            </div>
+
+       -->
+
+      <!--  -->
+      <h1
+        class="mb-5 t-align-c responsive-text"
+        title="Change Size Depend on Media"
+      >
+        Kura Framework
+      </h1>
+      <h3 class="header-title m-auto">Pops</h3>
+      <div class="pops display-i-b">
+        <span class="pop primary text-white">primary</span>
+        <span class="pop secondary text-white">secondary</span>
+        <span class="pop info text-white">info</span>
+        <span class="pop notice text-black">notice</span>
+        <span class="pop error text-white">error</span>
+        <span class="pop danger text-white">danger</span>
+        <span class="pop secure text-white">secure</span>
+        <span class="pop calm text-calm-9-dark">calm</span>
+      </div>
+
+      <h3 class="header-title">Cards</h3>
+      <div class="cards">
+        <div class="card fit">
+          <h3>Title Of Post</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
+            doloribus. Nihil odit reprehenderit debitis ipsum repellendus
+            numquam nesciunt veniam nulla, rerum hic eligendi cum illum, dolorem
+            ad corporis nemo eveniet.
+            <a href="#">read more</a>
+          </p>
+        </div>
+      </div>
+
+      <h3>Spans</h3>
+      <span class="text-info">Info</span> |
+      <span class="text-info-5-dark">Info</span> |
+      <span class="text-error">error</span> |
+      <span class="text-secondary">secondary</span> |
+      <span class="text-primary">primary</span> |
+
+      <div style="background-color: white; margin: 30px 0">
+        <h3>.[color] doesn't contains anything</h3>
+        <div class="pop info">info</div>
+        <div class="pop error">error</div>
+        <div class="pop notice">notice</div>
+        <div class="pop primary">primary</div>
+        <div class="pop secondary">secondary</div>
+      </div>
+
+      <div style="background-color: white">
+        <h3>class contains "hover" only</h3>
+        <div class="pop info hover">bg-info</div>
+        <div class="pop error hover">bg-error</div>
+        <div class="pop notice hover">bg-notice</div>
+        <div class="pop primary hover">bg-primary</div>
+        <div class="pop secondary hover">bg-secondary</div>
+      </div>
+
+      <div style="background-color: white">
+        <h3>Hover</h3>
+        <div class="pop bg-info">info</div>
+        <div class="pop bg-error">error</div>
+        <div class="pop bg-notice">notice</div>
+        <div class="pop bg-primary">primary</div>
+        <div class="pop bg-secondary">secondary</div>
+      </div>
+
+      <div style="background-color: white">
+        <h3>:Hover</h3>
+        <div class="pop info:hover">info</div>
+        <div class="pop error:hover">error</div>
+        <div class="pop notice:hover">notice</div>
+        <div class="pop primary:hover">primary</div>
+        <div class="pop secondary:hover">secondary</div>
+      </div>
+
+      <h3>Buttons</h3>
+      <div class="buttons">
+        <a href="#" class="btn">buttons default</a>
+        <a href="#" class="btn-primary">buttons primary</a>
+        <a href="#" class="btn-info">buttons info</a>
+        <a href="#" class="btn-error">buttons error</a>
+        <a href="#" class="btn-orange">buttons orange</a>
+        <h3>text-color with hover</h3>
+        <a href="#" class="btn-outline-primary text-black">buttons primary</a>
+        <a href="#" class="btn-outline-info text-black">buttons info</a>
+        <a href="#" class="btn-outline-error text-black">buttons error</a>
+        <a href="#" class="btn-outline-orange text-black">buttons orange</a>
+
+        <h3>Complement Colors</h3>
+        <div class="comp">
+          <div class="btn-comple-primary">Primary</div>
+          <div class="btn-comple-secondary">secondary</div>
+          <div class="btn-comple-gray">gray</div>
+          <div class="btn-complem-green">Green</div>
+          <a href="" class="btn-complem-primary">Primary</a>
+        </div>
+      </div>
+
+      <h1>Grid System</h1>
+      <div class="grid row">
+        <div class="card col-6-sm col-6-lg col-md-4">
+          <img src="../../Projects_UI/assets/front1.jpg" alt="" />
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-4-lg">
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-4-lg">
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-4-lg">
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-4-lg">
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-4-lg">
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="cards-round row grow">
+          <div class="card-round col-6-lg col-md-12">
+            <div class="img-wrapper">
+              <img src="../../Projects_UI/assets/front9.jpg" alt="" />
+            </div>
+            <div class="card-body">
+              <h3>title blog</h3>
+              <p>
+                Assumenda ut corrupti minus praesentium sequi cupiditate
+                consectetur vitae neque!
+              </p>
+              <a href="#">read more</a>
+            </div>
+          </div>
+          <!-- .card-round -->
+          <div class="card-round col-6-lg col-md-12">
+            <div class="img-wrapper">
+              <img src="../../Projects_UI/assets/front9.jpg" alt="" />
+            </div>
+            <div class="card-body">
+              <h3>title blog</h3>
+              <p>
+                Assumenda ut corrupti minus praesentium sequi cupiditate
+                consectetur vitae neque!
+              </p>
+              <a href="#">read more</a>
+            </div>
+          </div>
+          <!-- .card-round -->
+          <div class="card-round col-6-lg col-md-12">
+            <div class="img-wrapper">
+              <img src="../../Projects_UI/assets/front9.jpg" alt="" />
+            </div>
+            <div class="card-body">
+              <h3>title blog</h3>
+              <p>
+                Assumenda ut corrupti minus praesentium sequi cupiditate
+                consectetur vitae neque!
+              </p>
+              <a href="#">read more</a>
+            </div>
+          </div>
+          <!-- .card-round -->
+        </div>
+      </div>
+      <!--  -->
+
+      <h1>Jusitfy VS Align</h1>
+      <div class="cards row justify__center">
+        <div class="card col-6-sm col-5-lg col-md-4">
+          <img src="../../Projects_UI/assets/front1.jpg" alt="" />
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-5-lg col-md-4">
+          <img src="../../Projects_UI/assets/front1.jpg" alt="" />
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-5-lg col-md-4">
+          <img src="../../Projects_UI/assets/front1.jpg" alt="" />
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+        <div class="card col-6-sm col-5-lg col-md-4">
+          <img src="../../Projects_UI/assets/front1.jpg" alt="" />
+          <h4>Title Blog</h4>
+          <p>
+            fugit vel sequi? Eius ex vel quae. Cupiditate maxime voluptate
+            recusandae!
+          </p>
+          <a href="#">read more</a>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+  </body>
+</html>

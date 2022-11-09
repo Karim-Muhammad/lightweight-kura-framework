@@ -1,0 +1,4880 @@
+@charset "UTF-8";
+/*
+      you maybe see .sass NOT .scss
+      but there is different in Syntax
+      so we will use .scss
+
+      in .scss you can type plain css style is OK
+      but you cannot hood .sass file in your html, borwser can understand CSS only to do CSSOM
+      so we need something to compile .sass styles into .css style
+
+      there are many options to that
+      more easiest ways is installing compile sass extention in VSC or Download on Desktop
+      and using "Command line" to watch .sass and compile into .css
+
+      but there another way we can use, it can do thats auto, instead of me
+      It is "Task runner" which called "Gulpjs"
+      which also has more features which not found in Sass Compiler Exention
+
+      what we need install it by npm
+      - `npm install gulp gulp-sass sass --save-dev`
+      what means these?
+      gulp -> task runner which do compile files
+      gulp-sass -> plugin of gulp to do compiling sass files specially
+      sass -> which gulp use it under the hood to compile task
+      --save-dev -> means store all these packages in 'packages.json' as dev dependencies
+
+      before all of that, install "gulp-cli"
+      - `npm install -g gulp-cli`
+
+      and create "gulpfile.js" and do some functions to do some actions
+*/
+/*
+  -> using file contains default values that you maybe want to change it
+  -> Variables defined with !default can be configured when loading a module with the @use rule.
+  Sass libraries often use !default variables to allow their users to configure the library’s CSS.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+/* Variables */ /* Variables */
+/*  Font  */
+/*  Spacing  & Utilities  */
+/* Radius */
+/* Gradient */
+/*  Background  */
+/*  Shadow  */
+/* Variations */
+/*
+  Why we name "base-[name]"?
+    - because we can manipluate these values later on, to give us a large padding for example or large margin or less
+
+*/
+/* Base & Layout */
+/* Media For Small Devices */
+/* Media For Medium Devices */
+@media (min-width: 0px) {
+  .responsive-text {
+    background-color: red;
+    font-size: 10px;
+  }
+}
+@media (min-width: 480px) {
+  .responsive-text {
+    background-color: peachpuff;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 500px) {
+  .responsive-text {
+    background-color: black;
+  }
+}
+@media (min-width: 720px) {
+  .responsive-text {
+    background-color: lightgreen;
+    font-size: 2rem;
+  }
+}
+@media (min-width: 960px) {
+  .responsive-text {
+    background-color: aquamarine;
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  .responsive-text {
+    background-color: cadetblue;
+    font-size: 3.5rem;
+  }
+}
+
+/*
+  @content
+    when you include mixin uou write styles wihtin this mixin
+    so your code will replaced with @content
+
+    you can include mixin with many ways
+    1- @include nameMixin(arg) // if it need args
+    2- @nameMixin {
+      // code 
+    }
+
+*/
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.row.grow > [class*=col] {
+  flex-grow: 1;
+}
+
+.justify__flex-start {
+  justify-content: flex-start;
+}
+
+.align__flex-start {
+  align-items: flex-start;
+}
+
+.justify__flex-end {
+  justify-content: flex-end;
+}
+
+.align__flex-end {
+  align-items: flex-end;
+}
+
+.justify__center {
+  justify-content: center;
+}
+
+.align__center {
+  align-items: center;
+}
+
+.justify__space-between {
+  justify-content: space-between;
+}
+
+.align__space-between {
+  align-items: space-between;
+}
+
+.justify__space-evenly {
+  justify-content: space-evenly;
+}
+
+.align__space-evenly {
+  align-items: space-evenly;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.gap-4 {
+  gap: 4rem;
+}
+
+.gap-5 {
+  gap: 5rem;
+}
+
+.gap-6 {
+  gap: 6rem;
+}
+
+.gap-7 {
+  gap: 7rem;
+}
+
+.gap-8 {
+  gap: 8rem;
+}
+
+.gap-9 {
+  gap: 9rem;
+}
+
+.gap-10 {
+  gap: 10rem;
+}
+
+.gap-11 {
+  gap: 11rem;
+}
+
+.gap-12 {
+  gap: 12rem;
+}
+
+/* Column in Extra Small Screen */
+@media (min-width: 0px) {
+  .col-1-xs {
+    width: 8.3333333333%;
+  }
+  .col-2-xs {
+    width: 16.6666666667%;
+  }
+  .col-3-xs {
+    width: 25%;
+  }
+  .col-4-xs {
+    width: 33.3333333333%;
+  }
+  .col-5-xs {
+    width: 41.6666666667%;
+  }
+  .col-6-xs {
+    width: 50%;
+  }
+  .col-7-xs {
+    width: 58.3333333333%;
+  }
+  .col-8-xs {
+    width: 66.6666666667%;
+  }
+  .col-9-xs {
+    width: 75%;
+  }
+  .col-10-xs {
+    width: 83.3333333333%;
+  }
+  .col-11-xs {
+    width: 91.6666666667%;
+  }
+  .col-12-xs {
+    width: 100%;
+  }
+}
+/* Column in Small Screen */
+@media (min-width: 480px) {
+  .col-1-sm {
+    width: 8.3333333333%;
+  }
+  .col-2-sm {
+    width: 16.6666666667%;
+  }
+  .col-3-sm {
+    width: 25%;
+  }
+  .col-4-sm {
+    width: 33.3333333333%;
+  }
+  .col-5-sm {
+    width: 41.6666666667%;
+  }
+  .col-6-sm {
+    width: 50%;
+  }
+  .col-7-sm {
+    width: 58.3333333333%;
+  }
+  .col-8-sm {
+    width: 66.6666666667%;
+  }
+  .col-9-sm {
+    width: 75%;
+  }
+  .col-10-sm {
+    width: 83.3333333333%;
+  }
+  .col-11-sm {
+    width: 91.6666666667%;
+  }
+  .col-12-sm {
+    width: 100%;
+  }
+}
+/* Column in Medium Screen */
+@media (min-width: 720px) {
+  .col-1-md {
+    width: 8.3333333333%;
+  }
+  .col-2-md {
+    width: 16.6666666667%;
+  }
+  .col-3-md {
+    width: 25%;
+  }
+  .col-4-md {
+    width: 33.3333333333%;
+  }
+  .col-5-md {
+    width: 41.6666666667%;
+  }
+  .col-6-md {
+    width: 50%;
+  }
+  .col-7-md {
+    width: 58.3333333333%;
+  }
+  .col-8-md {
+    width: 66.6666666667%;
+  }
+  .col-9-md {
+    width: 75%;
+  }
+  .col-10-md {
+    width: 83.3333333333%;
+  }
+  .col-11-md {
+    width: 91.6666666667%;
+  }
+  .col-12-md {
+    width: 100%;
+  }
+}
+/* Column in Large Screen */
+@media (min-width: 960px) {
+  .col-1-lg {
+    width: 8.3333333333%;
+  }
+  .col-2-lg {
+    width: 16.6666666667%;
+  }
+  .col-3-lg {
+    width: 25%;
+  }
+  .col-4-lg {
+    width: 33.3333333333%;
+  }
+  .col-5-lg {
+    width: 41.6666666667%;
+  }
+  .col-6-lg {
+    width: 50%;
+  }
+  .col-7-lg {
+    width: 58.3333333333%;
+  }
+  .col-8-lg {
+    width: 66.6666666667%;
+  }
+  .col-9-lg {
+    width: 75%;
+  }
+  .col-10-lg {
+    width: 83.3333333333%;
+  }
+  .col-11-lg {
+    width: 91.6666666667%;
+  }
+  .col-12-lg {
+    width: 100%;
+  }
+}
+/* Component */
+.pop {
+  padding: 7px 13px;
+  border-radius: 1.3rem;
+}
+
+.card, .card-round {
+  padding: 1.5rem 0.975rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card, .card-round {
+  /*
+  @include xs {
+    font-size: math.div($font-size-lg, 2) !important;
+  }
+  @include sm {
+    font-size: $font-size-sm !important;
+  }
+  @include md {
+    font-size: $font-size-md !important;
+  }
+  @include lg {
+    font-size: $font-size-lg !important;
+  }
+  */
+}
+.card img, .card-round img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+.card h1, .card-round h1,
+.card h2,
+.card-round h2,
+.card h3,
+.card-round h3,
+.card h4,
+.card-round h4,
+.card h5,
+.card-round h5,
+.card h6,
+.card-round h6,
+.card .card-title,
+.card-round .card-title {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #118ab2;
+}
+.card p, .card-round p,
+.card .card-body,
+.card-round .card-body {
+  color: gray;
+  margin: 10px 0;
+}
+.card a, .card-round a,
+.card .card-link,
+.card-round .card-link {
+  text-decoration: none;
+  font-weight: 700;
+  color: #1167b2;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+/*
+@debug "Hello, World";
+@debug math.div(10, 3);
+// @debug math.max(1px, 9px, 20px 40px);
+@debug math.max(1, 9, 20, 40);
+@debug math.floor(2.9);
+*/
+.card-round {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-radius: 1.3rem;
+  border: 1px solid gray;
+}
+.card-round .card-body {
+  flex: 1;
+}
+@media (min-width: 480px) {
+  .card-round {
+    flex-direction: column;
+  }
+  .card-round .img-wrapper {
+    width: 100%;
+  }
+}
+@media (min-width: 720px) {
+  .card-round {
+    flex-direction: row;
+  }
+  .card-round .img-wrapper {
+    width: 40%;
+    border-radius: 50%;
+  }
+  .card-round .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+}
+
+/*
+      Way for group of punch of css properties which it could be included in other files 
+*/
+.btn {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #118ab2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-primary:hover {
+  background-color: #139cc9;
+}
+
+.btn-outline-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #118ab2;
+  color: #118ab2;
+}
+.btn-outline-primary:hover {
+  background-color: #118ab2;
+  color: #fff;
+}
+
+.btn-complem-primary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #118ab2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: #fad5c8;
+}
+.btn-complem-primary:hover {
+  color: #118ab2;
+  background-color: #fad5c8;
+}
+
+.btn-secondary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-secondary:hover {
+  background-color: #8d8d8d;
+}
+
+.btn-outline-secondary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid gray;
+  color: gray;
+}
+.btn-outline-secondary:hover {
+  background-color: gray;
+  color: #fff;
+}
+
+.btn-complem-secondary {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-secondary:hover {
+  color: gray;
+  background-color: white;
+}
+
+.btn-error {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ee3137;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-error:hover {
+  background-color: #f0494e;
+}
+
+.btn-outline-error {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #ee3137;
+  color: #ee3137;
+}
+.btn-outline-error:hover {
+  background-color: #ee3137;
+  color: #fff;
+}
+
+.btn-complem-error {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ee3137;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-error:hover {
+  color: #ee3137;
+  background-color: white;
+}
+
+.btn-info {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #06d6a0;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-info:hover {
+  background-color: #07efb3;
+}
+
+.btn-outline-info {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #06d6a0;
+  color: #06d6a0;
+}
+.btn-outline-info:hover {
+  background-color: #06d6a0;
+  color: #fff;
+}
+
+.btn-complem-info {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #06d6a0;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: #fedde6;
+}
+.btn-complem-info:hover {
+  color: #06d6a0;
+  background-color: #fedde6;
+}
+
+.btn-notice {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fee440;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-notice:hover {
+  background-color: #fee859;
+}
+
+.btn-outline-notice {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #fee440;
+  color: #fee440;
+}
+.btn-outline-notice:hover {
+  background-color: #fee440;
+  color: #fff;
+}
+
+.btn-complem-notice {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fee440;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-notice:hover {
+  color: #fee440;
+  background-color: white;
+}
+
+.btn-danger {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #f00;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-danger:hover {
+  background-color: #ff1a1a;
+}
+
+.btn-outline-danger {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #f00;
+  color: #f00;
+}
+.btn-outline-danger:hover {
+  background-color: #f00;
+  color: #fff;
+}
+
+.btn-complem-danger {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #f00;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-danger:hover {
+  color: #f00;
+  background-color: white;
+}
+
+.btn-secure {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #1167b2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-secure:hover {
+  background-color: #1374c9;
+}
+
+.btn-outline-secure {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #1167b2;
+  color: #1167b2;
+}
+.btn-outline-secure:hover {
+  background-color: #1167b2;
+  color: #fff;
+}
+
+.btn-complem-secure {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #1167b2;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: #fadfc8;
+}
+.btn-complem-secure:hover {
+  color: #1167b2;
+  background-color: #fadfc8;
+}
+
+.btn-calm {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #06d67f;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-calm:hover {
+  background-color: #07ef8e;
+}
+
+.btn-outline-calm {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #06d67f;
+  color: #06d67f;
+}
+.btn-outline-calm:hover {
+  background-color: #06d67f;
+  color: #fff;
+}
+
+.btn-complem-calm {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #06d67f;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: #feddeb;
+}
+.btn-complem-calm:hover {
+  color: #06d67f;
+  background-color: #feddeb;
+}
+
+.btn-blue {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #1919e6;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-blue:hover {
+  background-color: #3030e9;
+}
+
+.btn-outline-blue {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #1919e6;
+  color: #1919e6;
+}
+.btn-outline-blue:hover {
+  background-color: #1919e6;
+  color: #fff;
+}
+
+.btn-complem-blue {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #1919e6;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-blue:hover {
+  color: #1919e6;
+  background-color: white;
+}
+
+.btn-red {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #e61919;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-red:hover {
+  background-color: #e93030;
+}
+
+.btn-outline-red {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #e61919;
+  color: #e61919;
+}
+.btn-outline-red:hover {
+  background-color: #e61919;
+  color: #fff;
+}
+
+.btn-complem-red {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #e61919;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-red:hover {
+  color: #e61919;
+  background-color: white;
+}
+
+.btn-yellow {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #e6e619;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-yellow:hover {
+  background-color: #e9e930;
+}
+
+.btn-outline-yellow {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #e6e619;
+  color: #e6e619;
+}
+.btn-outline-yellow:hover {
+  background-color: #e6e619;
+  color: #fff;
+}
+
+.btn-complem-yellow {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #e6e619;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-yellow:hover {
+  color: #e6e619;
+  background-color: white;
+}
+
+.btn-green {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #19e635;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-green:hover {
+  background-color: #30e949;
+}
+
+.btn-outline-green {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #19e635;
+  color: #19e635;
+}
+.btn-outline-green:hover {
+  background-color: #19e635;
+  color: #fff;
+}
+
+.btn-complem-green {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #19e635;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-green:hover {
+  color: #19e635;
+  background-color: white;
+}
+
+.btn-orange {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffa600;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-orange:hover {
+  background-color: #ffaf1a;
+}
+
+.btn-outline-orange {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #ffa600;
+  color: #ffa600;
+}
+.btn-outline-orange:hover {
+  background-color: #ffa600;
+  color: #fff;
+}
+
+.btn-complem-orange {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffa600;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-orange:hover {
+  color: #ffa600;
+  background-color: white;
+}
+
+.btn-purple {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #9900ff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-purple:hover {
+  background-color: #a31aff;
+}
+
+.btn-outline-purple {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #9900ff;
+  color: #9900ff;
+}
+.btn-outline-purple:hover {
+  background-color: #9900ff;
+  color: #fff;
+}
+
+.btn-complem-purple {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #9900ff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-purple:hover {
+  color: #9900ff;
+  background-color: white;
+}
+
+.btn-gray {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #808080;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-gray:hover {
+  background-color: #8d8d8d;
+}
+
+.btn-outline-gray {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid #808080;
+  color: #808080;
+}
+.btn-outline-gray:hover {
+  background-color: #808080;
+  color: #fff;
+}
+
+.btn-complem-gray {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #808080;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-gray:hover {
+  color: #808080;
+  background-color: white;
+}
+
+.btn-black {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: black;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-black:hover {
+  background-color: #0d0d0d;
+}
+
+.btn-outline-black {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid black;
+  color: black;
+}
+.btn-outline-black:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.btn-complem-black {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: black;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: gray;
+}
+.btn-complem-black:hover {
+  color: black;
+  background-color: gray;
+}
+
+.btn-white {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+.btn-white:hover {
+  background-color: white;
+}
+
+.btn-outline-white {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  border: 2px solid white;
+  color: white;
+}
+.btn-outline-white:hover {
+  background-color: white;
+  color: #fff;
+}
+
+.btn-complem-white {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  transition: 0.2s;
+  color: white;
+}
+.btn-complem-white:hover {
+  color: white;
+  background-color: white;
+}
+
+.navbar .container, .navbar .list, .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar .site-title {
+  font-size: 2rem;
+}
+.navbar .list {
+  padding: 0;
+}
+.navbar .list li {
+  text-transform: capitalize;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.navbar .list li:hover {
+  letter-spacing: 1.3px;
+}
+.heading .heading-title::before, .heading .heading-title::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: #118ab2;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.heading {
+  padding: 20px;
+  width: 100%;
+}
+.heading .heading-title {
+  margin: 0 auto;
+  padding: 10px 20px;
+  width: fit-content;
+  font-size: 1.2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+}
+.heading .heading-title::after {
+  right: -20px;
+}
+.heading .heading-title::before {
+  left: -20px;
+}
+.heading .heading-title:hover {
+  border-radius: 1.4rem;
+}
+.heading .heading-title:hover::after {
+  right: 0;
+  background-color: white;
+}
+.heading .heading-title:hover::before {
+  left: 0;
+  background-color: white;
+}
+
+/* Utlity */
+/*
+      this file for utility colors, text color, background color
+*/
+/*
+div {
+  &[class=primary-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.primary {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.primary {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-primary {
+  color: #118ab2;
+}
+div .text-primary:hover {
+  color: dark(#118ab2, 70);
+}
+
+.bg-primary {
+  background-color: #118ab2;
+}
+.bg-primary:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-primary-light-1 {
+  color: #2292b7;
+}
+
+.text-primary-dark-1 {
+  color: #1080a6;
+}
+
+.bg-primary-light-1 {
+  background-color: #2292b7;
+}
+
+.bg-primary-dark-1 {
+  background-color: #1080a6;
+}
+
+/* -2- */
+.text-primary-light-2 {
+  color: #329abd;
+}
+
+.text-primary-dark-2 {
+  color: #0f7799;
+}
+
+.bg-primary-light-2 {
+  background-color: #329abd;
+}
+
+.bg-primary-dark-2 {
+  background-color: #0f7799;
+}
+
+/* -3- */
+.text-primary-light-3 {
+  color: #43a3c2;
+}
+
+.text-primary-dark-3 {
+  color: #0d6d8d;
+}
+
+.bg-primary-light-3 {
+  background-color: #43a3c2;
+}
+
+.bg-primary-dark-3 {
+  background-color: #0d6d8d;
+}
+
+/* -4- */
+.text-primary-light-4 {
+  color: #54abc8;
+}
+
+.text-primary-dark-4 {
+  color: #0c6380;
+}
+
+.bg-primary-light-4 {
+  background-color: #54abc8;
+}
+
+.bg-primary-dark-4 {
+  background-color: #0c6380;
+}
+
+/* -5- */
+.text-primary-light-5 {
+  color: #64b3cd;
+}
+
+.text-primary-dark-5 {
+  color: #0b5a74;
+}
+
+.bg-primary-light-5 {
+  background-color: #64b3cd;
+}
+
+.bg-primary-dark-5 {
+  background-color: #0b5a74;
+}
+
+/* -6- */
+.text-primary-light-6 {
+  color: #75bbd2;
+}
+
+.text-primary-dark-6 {
+  color: #0a5067;
+}
+
+.bg-primary-light-6 {
+  background-color: #75bbd2;
+}
+
+.bg-primary-dark-6 {
+  background-color: #0a5067;
+}
+
+/* -7- */
+.text-primary-light-7 {
+  color: #86c3d8;
+}
+
+.text-primary-dark-7 {
+  color: #09465b;
+}
+
+.bg-primary-light-7 {
+  background-color: #86c3d8;
+}
+
+.bg-primary-dark-7 {
+  background-color: #09465b;
+}
+
+/* -8- */
+.text-primary-light-8 {
+  color: #96ccdd;
+}
+
+.text-primary-dark-8 {
+  color: #073d4e;
+}
+
+.bg-primary-light-8 {
+  background-color: #96ccdd;
+}
+
+.bg-primary-dark-8 {
+  background-color: #073d4e;
+}
+
+/* -9- */
+.text-primary-light-9 {
+  color: #a7d4e3;
+}
+
+.text-primary-dark-9 {
+  color: #063342;
+}
+
+.bg-primary-light-9 {
+  background-color: #a7d4e3;
+}
+
+.bg-primary-dark-9 {
+  background-color: #063342;
+}
+
+/*
+div {
+  &[class=secondary-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.secondary {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.secondary {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-secondary {
+  color: gray;
+}
+div .text-secondary:hover {
+  color: dark(gray, 70);
+}
+
+.bg-secondary {
+  background-color: gray;
+}
+.bg-secondary:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-secondary-light-1 {
+  color: #898989;
+}
+
+.text-secondary-dark-1 {
+  color: #777777;
+}
+
+.bg-secondary-light-1 {
+  background-color: #898989;
+}
+
+.bg-secondary-dark-1 {
+  background-color: #777777;
+}
+
+/* -2- */
+.text-secondary-light-2 {
+  color: #929292;
+}
+
+.text-secondary-dark-2 {
+  color: #6e6e6e;
+}
+
+.bg-secondary-light-2 {
+  background-color: #929292;
+}
+
+.bg-secondary-dark-2 {
+  background-color: #6e6e6e;
+}
+
+/* -3- */
+.text-secondary-light-3 {
+  color: #9b9b9b;
+}
+
+.text-secondary-dark-3 {
+  color: #656565;
+}
+
+.bg-secondary-light-3 {
+  background-color: #9b9b9b;
+}
+
+.bg-secondary-dark-3 {
+  background-color: #656565;
+}
+
+/* -4- */
+.text-secondary-light-4 {
+  color: #a4a4a4;
+}
+
+.text-secondary-dark-4 {
+  color: #5c5c5c;
+}
+
+.bg-secondary-light-4 {
+  background-color: #a4a4a4;
+}
+
+.bg-secondary-dark-4 {
+  background-color: #5c5c5c;
+}
+
+/* -5- */
+.text-secondary-light-5 {
+  color: #acacac;
+}
+
+.text-secondary-dark-5 {
+  color: #535353;
+}
+
+.bg-secondary-light-5 {
+  background-color: #acacac;
+}
+
+.bg-secondary-dark-5 {
+  background-color: #535353;
+}
+
+/* -6- */
+.text-secondary-light-6 {
+  color: #b5b5b5;
+}
+
+.text-secondary-dark-6 {
+  color: #4a4a4a;
+}
+
+.bg-secondary-light-6 {
+  background-color: #b5b5b5;
+}
+
+.bg-secondary-dark-6 {
+  background-color: #4a4a4a;
+}
+
+/* -7- */
+.text-secondary-light-7 {
+  color: #bebebe;
+}
+
+.text-secondary-dark-7 {
+  color: #414141;
+}
+
+.bg-secondary-light-7 {
+  background-color: #bebebe;
+}
+
+.bg-secondary-dark-7 {
+  background-color: #414141;
+}
+
+/* -8- */
+.text-secondary-light-8 {
+  color: #c7c7c7;
+}
+
+.text-secondary-dark-8 {
+  color: #383838;
+}
+
+.bg-secondary-light-8 {
+  background-color: #c7c7c7;
+}
+
+.bg-secondary-dark-8 {
+  background-color: #383838;
+}
+
+/* -9- */
+.text-secondary-light-9 {
+  color: #d0d0d0;
+}
+
+.text-secondary-dark-9 {
+  color: #2f2f2f;
+}
+
+.bg-secondary-light-9 {
+  background-color: #d0d0d0;
+}
+
+.bg-secondary-dark-9 {
+  background-color: #2f2f2f;
+}
+
+/*
+div {
+  &[class=error-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.error {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.error {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-error {
+  color: #ee3137;
+}
+div .text-error:hover {
+  color: dark(#ee3137, 70);
+}
+
+.bg-error {
+  background-color: #ee3137;
+}
+.bg-error:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-error-light-1 {
+  color: #ef3f45;
+}
+
+.text-error-dark-1 {
+  color: #dd2e33;
+}
+
+.bg-error-light-1 {
+  background-color: #ef3f45;
+}
+
+.bg-error-dark-1 {
+  background-color: #dd2e33;
+}
+
+/* -2- */
+.text-error-light-2 {
+  color: #f04e53;
+}
+
+.text-error-dark-2 {
+  color: #cd2a2f;
+}
+
+.bg-error-light-2 {
+  background-color: #f04e53;
+}
+
+.bg-error-dark-2 {
+  background-color: #cd2a2f;
+}
+
+/* -3- */
+.text-error-light-3 {
+  color: #f25c61;
+}
+
+.text-error-dark-3 {
+  color: #bc272b;
+}
+
+.bg-error-light-3 {
+  background-color: #f25c61;
+}
+
+.bg-error-dark-3 {
+  background-color: #bc272b;
+}
+
+/* -4- */
+.text-error-light-4 {
+  color: #f36b6f;
+}
+
+.text-error-dark-4 {
+  color: #ab2328;
+}
+
+.bg-error-light-4 {
+  background-color: #f36b6f;
+}
+
+.bg-error-dark-4 {
+  background-color: #ab2328;
+}
+
+/* -5- */
+.text-error-light-5 {
+  color: #f4797d;
+}
+
+.text-error-dark-5 {
+  color: #9b2024;
+}
+
+.bg-error-light-5 {
+  background-color: #f4797d;
+}
+
+.bg-error-dark-5 {
+  background-color: #9b2024;
+}
+
+/* -6- */
+.text-error-light-6 {
+  color: #f5888b;
+}
+
+.text-error-dark-6 {
+  color: #8a1c20;
+}
+
+.bg-error-light-6 {
+  background-color: #f5888b;
+}
+
+.bg-error-dark-6 {
+  background-color: #8a1c20;
+}
+
+/* -7- */
+.text-error-light-7 {
+  color: #f69699;
+}
+
+.text-error-dark-7 {
+  color: #79191c;
+}
+
+.bg-error-light-7 {
+  background-color: #f69699;
+}
+
+.bg-error-dark-7 {
+  background-color: #79191c;
+}
+
+/* -8- */
+.text-error-light-8 {
+  color: #f8a4a7;
+}
+
+.text-error-dark-8 {
+  color: #691618;
+}
+
+.bg-error-light-8 {
+  background-color: #f8a4a7;
+}
+
+.bg-error-dark-8 {
+  background-color: #691618;
+}
+
+/* -9- */
+.text-error-light-9 {
+  color: #f9b3b5;
+}
+
+.text-error-dark-9 {
+  color: #581214;
+}
+
+.bg-error-light-9 {
+  background-color: #f9b3b5;
+}
+
+.bg-error-dark-9 {
+  background-color: #581214;
+}
+
+/*
+div {
+  &[class=info-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.info {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.info {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-info {
+  color: #06d6a0;
+}
+div .text-info:hover {
+  color: dark(#06d6a0, 70);
+}
+
+.bg-info {
+  background-color: #06d6a0;
+}
+.bg-info:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-info-light-1 {
+  color: #17d9a7;
+}
+
+.text-info-dark-1 {
+  color: #06c795;
+}
+
+.bg-info-light-1 {
+  background-color: #17d9a7;
+}
+
+.bg-info-dark-1 {
+  background-color: #06c795;
+}
+
+/* -2- */
+.text-info-light-2 {
+  color: #29dcad;
+}
+
+.text-info-dark-2 {
+  color: #05b88a;
+}
+
+.bg-info-light-2 {
+  background-color: #29dcad;
+}
+
+.bg-info-dark-2 {
+  background-color: #05b88a;
+}
+
+/* -3- */
+.text-info-light-3 {
+  color: #3adfb4;
+}
+
+.text-info-dark-3 {
+  color: #05a97e;
+}
+
+.bg-info-light-3 {
+  background-color: #3adfb4;
+}
+
+.bg-info-dark-3 {
+  background-color: #05a97e;
+}
+
+/* -4- */
+.text-info-light-4 {
+  color: #4ce1bb;
+}
+
+.text-info-dark-4 {
+  color: #049a73;
+}
+
+.bg-info-light-4 {
+  background-color: #4ce1bb;
+}
+
+.bg-info-dark-4 {
+  background-color: #049a73;
+}
+
+/* -5- */
+.text-info-light-5 {
+  color: #5de4c1;
+}
+
+.text-info-dark-5 {
+  color: #048b68;
+}
+
+.bg-info-light-5 {
+  background-color: #5de4c1;
+}
+
+.bg-info-dark-5 {
+  background-color: #048b68;
+}
+
+/* -6- */
+.text-info-light-6 {
+  color: #6fe7c8;
+}
+
+.text-info-dark-6 {
+  color: #037c5d;
+}
+
+.bg-info-light-6 {
+  background-color: #6fe7c8;
+}
+
+.bg-info-dark-6 {
+  background-color: #037c5d;
+}
+
+/* -7- */
+.text-info-light-7 {
+  color: #80eacf;
+}
+
+.text-info-dark-7 {
+  color: #036d52;
+}
+
+.bg-info-light-7 {
+  background-color: #80eacf;
+}
+
+.bg-info-dark-7 {
+  background-color: #036d52;
+}
+
+/* -8- */
+.text-info-light-8 {
+  color: #91edd5;
+}
+
+.text-info-dark-8 {
+  color: #035e46;
+}
+
+.bg-info-light-8 {
+  background-color: #91edd5;
+}
+
+.bg-info-dark-8 {
+  background-color: #035e46;
+}
+
+/* -9- */
+.text-info-light-9 {
+  color: #a3f0dc;
+}
+
+.text-info-dark-9 {
+  color: #024f3b;
+}
+
+.bg-info-light-9 {
+  background-color: #a3f0dc;
+}
+
+.bg-info-dark-9 {
+  background-color: #024f3b;
+}
+
+/*
+div {
+  &[class=notice-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.notice {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.notice {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-notice {
+  color: #fee440;
+}
+div .text-notice:hover {
+  color: dark(#fee440, 70);
+}
+
+.bg-notice {
+  background-color: #fee440;
+}
+.bg-notice:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-notice-light-1 {
+  color: #fee64d;
+}
+
+.text-notice-dark-1 {
+  color: #ecd43c;
+}
+
+.bg-notice-light-1 {
+  background-color: #fee64d;
+}
+
+.bg-notice-dark-1 {
+  background-color: #ecd43c;
+}
+
+/* -2- */
+.text-notice-light-2 {
+  color: #fee85b;
+}
+
+.text-notice-dark-2 {
+  color: #dac437;
+}
+
+.bg-notice-light-2 {
+  background-color: #fee85b;
+}
+
+.bg-notice-dark-2 {
+  background-color: #dac437;
+}
+
+/* -3- */
+.text-notice-light-3 {
+  color: #feea68;
+}
+
+.text-notice-dark-3 {
+  color: #c9b433;
+}
+
+.bg-notice-light-3 {
+  background-color: #feea68;
+}
+
+.bg-notice-dark-3 {
+  background-color: #c9b433;
+}
+
+/* -4- */
+.text-notice-light-4 {
+  color: #feec75;
+}
+
+.text-notice-dark-4 {
+  color: #b7a42e;
+}
+
+.bg-notice-light-4 {
+  background-color: #feec75;
+}
+
+.bg-notice-dark-4 {
+  background-color: #b7a42e;
+}
+
+/* -5- */
+.text-notice-light-5 {
+  color: #feed83;
+}
+
+.text-notice-dark-5 {
+  color: #a5942a;
+}
+
+.bg-notice-light-5 {
+  background-color: #feed83;
+}
+
+.bg-notice-dark-5 {
+  background-color: #a5942a;
+}
+
+/* -6- */
+.text-notice-light-6 {
+  color: #feef90;
+}
+
+.text-notice-dark-6 {
+  color: #938425;
+}
+
+.bg-notice-light-6 {
+  background-color: #feef90;
+}
+
+.bg-notice-dark-6 {
+  background-color: #938425;
+}
+
+/* -7- */
+.text-notice-light-7 {
+  color: #fef19e;
+}
+
+.text-notice-dark-7 {
+  color: #827421;
+}
+
+.bg-notice-light-7 {
+  background-color: #fef19e;
+}
+
+.bg-notice-dark-7 {
+  background-color: #827421;
+}
+
+/* -8- */
+.text-notice-light-8 {
+  color: #fff3ab;
+}
+
+.text-notice-dark-8 {
+  color: #70641c;
+}
+
+.bg-notice-light-8 {
+  background-color: #fff3ab;
+}
+
+.bg-notice-dark-8 {
+  background-color: #70641c;
+}
+
+/* -9- */
+.text-notice-light-9 {
+  color: #fff5b8;
+}
+
+.text-notice-dark-9 {
+  color: #5e5418;
+}
+
+.bg-notice-light-9 {
+  background-color: #fff5b8;
+}
+
+.bg-notice-dark-9 {
+  background-color: #5e5418;
+}
+
+/*
+div {
+  &[class=danger-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.danger {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.danger {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-danger {
+  color: #f00;
+}
+div .text-danger:hover {
+  color: dark(#f00, 70);
+}
+
+.bg-danger {
+  background-color: #f00;
+}
+.bg-danger:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-danger-light-1 {
+  color: #ff1212;
+}
+
+.text-danger-dark-1 {
+  color: #ed0000;
+}
+
+.bg-danger-light-1 {
+  background-color: #ff1212;
+}
+
+.bg-danger-dark-1 {
+  background-color: #ed0000;
+}
+
+/* -2- */
+.text-danger-light-2 {
+  color: #ff2424;
+}
+
+.text-danger-dark-2 {
+  color: #db0000;
+}
+
+.bg-danger-light-2 {
+  background-color: #ff2424;
+}
+
+.bg-danger-dark-2 {
+  background-color: #db0000;
+}
+
+/* -3- */
+.text-danger-light-3 {
+  color: #ff3636;
+}
+
+.text-danger-dark-3 {
+  color: #c90000;
+}
+
+.bg-danger-light-3 {
+  background-color: #ff3636;
+}
+
+.bg-danger-dark-3 {
+  background-color: #c90000;
+}
+
+/* -4- */
+.text-danger-light-4 {
+  color: #ff4747;
+}
+
+.text-danger-dark-4 {
+  color: #b80000;
+}
+
+.bg-danger-light-4 {
+  background-color: #ff4747;
+}
+
+.bg-danger-dark-4 {
+  background-color: #b80000;
+}
+
+/* -5- */
+.text-danger-light-5 {
+  color: #ff5959;
+}
+
+.text-danger-dark-5 {
+  color: #a60000;
+}
+
+.bg-danger-light-5 {
+  background-color: #ff5959;
+}
+
+.bg-danger-dark-5 {
+  background-color: #a60000;
+}
+
+/* -6- */
+.text-danger-light-6 {
+  color: #ff6b6b;
+}
+
+.text-danger-dark-6 {
+  color: #940000;
+}
+
+.bg-danger-light-6 {
+  background-color: #ff6b6b;
+}
+
+.bg-danger-dark-6 {
+  background-color: #940000;
+}
+
+/* -7- */
+.text-danger-light-7 {
+  color: #ff7d7d;
+}
+
+.text-danger-dark-7 {
+  color: #820000;
+}
+
+.bg-danger-light-7 {
+  background-color: #ff7d7d;
+}
+
+.bg-danger-dark-7 {
+  background-color: #820000;
+}
+
+/* -8- */
+.text-danger-light-8 {
+  color: #ff8f8f;
+}
+
+.text-danger-dark-8 {
+  color: #700000;
+}
+
+.bg-danger-light-8 {
+  background-color: #ff8f8f;
+}
+
+.bg-danger-dark-8 {
+  background-color: #700000;
+}
+
+/* -9- */
+.text-danger-light-9 {
+  color: #ffa1a1;
+}
+
+.text-danger-dark-9 {
+  color: #5e0000;
+}
+
+.bg-danger-light-9 {
+  background-color: #ffa1a1;
+}
+
+.bg-danger-dark-9 {
+  background-color: #5e0000;
+}
+
+/*
+div {
+  &[class=secure-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.secure {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.secure {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-secure {
+  color: #1167b2;
+}
+div .text-secure:hover {
+  color: dark(#1167b2, 70);
+}
+
+.bg-secure {
+  background-color: #1167b2;
+}
+.bg-secure:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-secure-light-1 {
+  color: #2272b7;
+}
+
+.text-secure-dark-1 {
+  color: #1060a6;
+}
+
+.bg-secure-light-1 {
+  background-color: #2272b7;
+}
+
+.bg-secure-dark-1 {
+  background-color: #1060a6;
+}
+
+/* -2- */
+.text-secure-light-2 {
+  color: #327cbd;
+}
+
+.text-secure-dark-2 {
+  color: #0f5999;
+}
+
+.bg-secure-light-2 {
+  background-color: #327cbd;
+}
+
+.bg-secure-dark-2 {
+  background-color: #0f5999;
+}
+
+/* -3- */
+.text-secure-light-3 {
+  color: #4387c2;
+}
+
+.text-secure-dark-3 {
+  color: #0d518d;
+}
+
+.bg-secure-light-3 {
+  background-color: #4387c2;
+}
+
+.bg-secure-dark-3 {
+  background-color: #0d518d;
+}
+
+/* -4- */
+.text-secure-light-4 {
+  color: #5492c8;
+}
+
+.text-secure-dark-4 {
+  color: #0c4a80;
+}
+
+.bg-secure-light-4 {
+  background-color: #5492c8;
+}
+
+.bg-secure-dark-4 {
+  background-color: #0c4a80;
+}
+
+/* -5- */
+.text-secure-light-5 {
+  color: #649ccd;
+}
+
+.text-secure-dark-5 {
+  color: #0b4374;
+}
+
+.bg-secure-light-5 {
+  background-color: #649ccd;
+}
+
+.bg-secure-dark-5 {
+  background-color: #0b4374;
+}
+
+/* -6- */
+.text-secure-light-6 {
+  color: #75a7d2;
+}
+
+.text-secure-dark-6 {
+  color: #0a3c67;
+}
+
+.bg-secure-light-6 {
+  background-color: #75a7d2;
+}
+
+.bg-secure-dark-6 {
+  background-color: #0a3c67;
+}
+
+/* -7- */
+.text-secure-light-7 {
+  color: #86b1d8;
+}
+
+.text-secure-dark-7 {
+  color: #09355b;
+}
+
+.bg-secure-light-7 {
+  background-color: #86b1d8;
+}
+
+.bg-secure-dark-7 {
+  background-color: #09355b;
+}
+
+/* -8- */
+.text-secure-light-8 {
+  color: #96bcdd;
+}
+
+.text-secure-dark-8 {
+  color: #072d4e;
+}
+
+.bg-secure-light-8 {
+  background-color: #96bcdd;
+}
+
+.bg-secure-dark-8 {
+  background-color: #072d4e;
+}
+
+/* -9- */
+.text-secure-light-9 {
+  color: #a7c7e3;
+}
+
+.text-secure-dark-9 {
+  color: #062642;
+}
+
+.bg-secure-light-9 {
+  background-color: #a7c7e3;
+}
+
+.bg-secure-dark-9 {
+  background-color: #062642;
+}
+
+/*
+div {
+  &[class=calm-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.calm {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.calm {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-calm {
+  color: #06d67f;
+}
+div .text-calm:hover {
+  color: dark(#06d67f, 70);
+}
+
+.bg-calm {
+  background-color: #06d67f;
+}
+.bg-calm:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-calm-light-1 {
+  color: #17d988;
+}
+
+.text-calm-dark-1 {
+  color: #06c776;
+}
+
+.bg-calm-light-1 {
+  background-color: #17d988;
+}
+
+.bg-calm-dark-1 {
+  background-color: #06c776;
+}
+
+/* -2- */
+.text-calm-light-2 {
+  color: #29dc91;
+}
+
+.text-calm-dark-2 {
+  color: #05b86d;
+}
+
+.bg-calm-light-2 {
+  background-color: #29dc91;
+}
+
+.bg-calm-dark-2 {
+  background-color: #05b86d;
+}
+
+/* -3- */
+.text-calm-light-3 {
+  color: #3adf9a;
+}
+
+.text-calm-dark-3 {
+  color: #05a964;
+}
+
+.bg-calm-light-3 {
+  background-color: #3adf9a;
+}
+
+.bg-calm-dark-3 {
+  background-color: #05a964;
+}
+
+/* -4- */
+.text-calm-light-4 {
+  color: #4ce1a3;
+}
+
+.text-calm-dark-4 {
+  color: #049a5b;
+}
+
+.bg-calm-light-4 {
+  background-color: #4ce1a3;
+}
+
+.bg-calm-dark-4 {
+  background-color: #049a5b;
+}
+
+/* -5- */
+.text-calm-light-5 {
+  color: #5de4ac;
+}
+
+.text-calm-dark-5 {
+  color: #048b53;
+}
+
+.bg-calm-light-5 {
+  background-color: #5de4ac;
+}
+
+.bg-calm-dark-5 {
+  background-color: #048b53;
+}
+
+/* -6- */
+.text-calm-light-6 {
+  color: #6fe7b5;
+}
+
+.text-calm-dark-6 {
+  color: #037c4a;
+}
+
+.bg-calm-light-6 {
+  background-color: #6fe7b5;
+}
+
+.bg-calm-dark-6 {
+  background-color: #037c4a;
+}
+
+/* -7- */
+.text-calm-light-7 {
+  color: #80eabe;
+}
+
+.text-calm-dark-7 {
+  color: #036d41;
+}
+
+.bg-calm-light-7 {
+  background-color: #80eabe;
+}
+
+.bg-calm-dark-7 {
+  background-color: #036d41;
+}
+
+/* -8- */
+.text-calm-light-8 {
+  color: #91edc7;
+}
+
+.text-calm-dark-8 {
+  color: #035e38;
+}
+
+.bg-calm-light-8 {
+  background-color: #91edc7;
+}
+
+.bg-calm-dark-8 {
+  background-color: #035e38;
+}
+
+/* -9- */
+.text-calm-light-9 {
+  color: #a3f0d0;
+}
+
+.text-calm-dark-9 {
+  color: #024f2f;
+}
+
+.bg-calm-light-9 {
+  background-color: #a3f0d0;
+}
+
+.bg-calm-dark-9 {
+  background-color: #024f2f;
+}
+
+/*
+div {
+  &[class=blue-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.blue {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.blue {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-blue {
+  color: #1919e6;
+}
+div .text-blue:hover {
+  color: dark(#1919e6, 70);
+}
+
+.bg-blue {
+  background-color: #1919e6;
+}
+.bg-blue:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-blue-light-1 {
+  color: #2929e8;
+}
+
+.text-blue-dark-1 {
+  color: #1717d6;
+}
+
+.bg-blue-light-1 {
+  background-color: #2929e8;
+}
+
+.bg-blue-dark-1 {
+  background-color: #1717d6;
+}
+
+/* -2- */
+.text-blue-light-2 {
+  color: #3939ea;
+}
+
+.text-blue-dark-2 {
+  color: #1616c6;
+}
+
+.bg-blue-light-2 {
+  background-color: #3939ea;
+}
+
+.bg-blue-dark-2 {
+  background-color: #1616c6;
+}
+
+/* -3- */
+.text-blue-light-3 {
+  color: #4949eb;
+}
+
+.text-blue-dark-3 {
+  color: #1414b6;
+}
+
+.bg-blue-light-3 {
+  background-color: #4949eb;
+}
+
+.bg-blue-dark-3 {
+  background-color: #1414b6;
+}
+
+/* -4- */
+.text-blue-light-4 {
+  color: #5959ed;
+}
+
+.text-blue-dark-4 {
+  color: #1212a6;
+}
+
+.bg-blue-light-4 {
+  background-color: #5959ed;
+}
+
+.bg-blue-dark-4 {
+  background-color: #1212a6;
+}
+
+/* -5- */
+.text-blue-light-5 {
+  color: #6a6aef;
+}
+
+.text-blue-dark-5 {
+  color: #101096;
+}
+
+.bg-blue-light-5 {
+  background-color: #6a6aef;
+}
+
+.bg-blue-dark-5 {
+  background-color: #101096;
+}
+
+/* -6- */
+.text-blue-light-6 {
+  color: #7a7af1;
+}
+
+.text-blue-dark-6 {
+  color: #0f0f85;
+}
+
+.bg-blue-light-6 {
+  background-color: #7a7af1;
+}
+
+.bg-blue-dark-6 {
+  background-color: #0f0f85;
+}
+
+/* -7- */
+.text-blue-light-7 {
+  color: #8a8af2;
+}
+
+.text-blue-dark-7 {
+  color: #0d0d75;
+}
+
+.bg-blue-light-7 {
+  background-color: #8a8af2;
+}
+
+.bg-blue-dark-7 {
+  background-color: #0d0d75;
+}
+
+/* -8- */
+.text-blue-light-8 {
+  color: #9a9af4;
+}
+
+.text-blue-dark-8 {
+  color: #0b0b65;
+}
+
+.bg-blue-light-8 {
+  background-color: #9a9af4;
+}
+
+.bg-blue-dark-8 {
+  background-color: #0b0b65;
+}
+
+/* -9- */
+.text-blue-light-9 {
+  color: #aaaaf6;
+}
+
+.text-blue-dark-9 {
+  color: #090955;
+}
+
+.bg-blue-light-9 {
+  background-color: #aaaaf6;
+}
+
+.bg-blue-dark-9 {
+  background-color: #090955;
+}
+
+/*
+div {
+  &[class=red-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.red {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.red {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-red {
+  color: #e61919;
+}
+div .text-red:hover {
+  color: dark(#e61919, 70);
+}
+
+.bg-red {
+  background-color: #e61919;
+}
+.bg-red:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-red-light-1 {
+  color: #e82929;
+}
+
+.text-red-dark-1 {
+  color: #d61717;
+}
+
+.bg-red-light-1 {
+  background-color: #e82929;
+}
+
+.bg-red-dark-1 {
+  background-color: #d61717;
+}
+
+/* -2- */
+.text-red-light-2 {
+  color: #ea3939;
+}
+
+.text-red-dark-2 {
+  color: #c61616;
+}
+
+.bg-red-light-2 {
+  background-color: #ea3939;
+}
+
+.bg-red-dark-2 {
+  background-color: #c61616;
+}
+
+/* -3- */
+.text-red-light-3 {
+  color: #eb4949;
+}
+
+.text-red-dark-3 {
+  color: #b61414;
+}
+
+.bg-red-light-3 {
+  background-color: #eb4949;
+}
+
+.bg-red-dark-3 {
+  background-color: #b61414;
+}
+
+/* -4- */
+.text-red-light-4 {
+  color: #ed5959;
+}
+
+.text-red-dark-4 {
+  color: #a61212;
+}
+
+.bg-red-light-4 {
+  background-color: #ed5959;
+}
+
+.bg-red-dark-4 {
+  background-color: #a61212;
+}
+
+/* -5- */
+.text-red-light-5 {
+  color: #ef6a6a;
+}
+
+.text-red-dark-5 {
+  color: #961010;
+}
+
+.bg-red-light-5 {
+  background-color: #ef6a6a;
+}
+
+.bg-red-dark-5 {
+  background-color: #961010;
+}
+
+/* -6- */
+.text-red-light-6 {
+  color: #f17a7a;
+}
+
+.text-red-dark-6 {
+  color: #850f0f;
+}
+
+.bg-red-light-6 {
+  background-color: #f17a7a;
+}
+
+.bg-red-dark-6 {
+  background-color: #850f0f;
+}
+
+/* -7- */
+.text-red-light-7 {
+  color: #f28a8a;
+}
+
+.text-red-dark-7 {
+  color: #750d0d;
+}
+
+.bg-red-light-7 {
+  background-color: #f28a8a;
+}
+
+.bg-red-dark-7 {
+  background-color: #750d0d;
+}
+
+/* -8- */
+.text-red-light-8 {
+  color: #f49a9a;
+}
+
+.text-red-dark-8 {
+  color: #650b0b;
+}
+
+.bg-red-light-8 {
+  background-color: #f49a9a;
+}
+
+.bg-red-dark-8 {
+  background-color: #650b0b;
+}
+
+/* -9- */
+.text-red-light-9 {
+  color: #f6aaaa;
+}
+
+.text-red-dark-9 {
+  color: #550909;
+}
+
+.bg-red-light-9 {
+  background-color: #f6aaaa;
+}
+
+.bg-red-dark-9 {
+  background-color: #550909;
+}
+
+/*
+div {
+  &[class=yellow-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.yellow {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.yellow {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-yellow {
+  color: #e6e619;
+}
+div .text-yellow:hover {
+  color: dark(#e6e619, 70);
+}
+
+.bg-yellow {
+  background-color: #e6e619;
+}
+.bg-yellow:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-yellow-light-1 {
+  color: #e8e829;
+}
+
+.text-yellow-dark-1 {
+  color: #d6d617;
+}
+
+.bg-yellow-light-1 {
+  background-color: #e8e829;
+}
+
+.bg-yellow-dark-1 {
+  background-color: #d6d617;
+}
+
+/* -2- */
+.text-yellow-light-2 {
+  color: #eaea39;
+}
+
+.text-yellow-dark-2 {
+  color: #c6c616;
+}
+
+.bg-yellow-light-2 {
+  background-color: #eaea39;
+}
+
+.bg-yellow-dark-2 {
+  background-color: #c6c616;
+}
+
+/* -3- */
+.text-yellow-light-3 {
+  color: #ebeb49;
+}
+
+.text-yellow-dark-3 {
+  color: #b6b614;
+}
+
+.bg-yellow-light-3 {
+  background-color: #ebeb49;
+}
+
+.bg-yellow-dark-3 {
+  background-color: #b6b614;
+}
+
+/* -4- */
+.text-yellow-light-4 {
+  color: #eded59;
+}
+
+.text-yellow-dark-4 {
+  color: #a6a612;
+}
+
+.bg-yellow-light-4 {
+  background-color: #eded59;
+}
+
+.bg-yellow-dark-4 {
+  background-color: #a6a612;
+}
+
+/* -5- */
+.text-yellow-light-5 {
+  color: #efef6a;
+}
+
+.text-yellow-dark-5 {
+  color: #969610;
+}
+
+.bg-yellow-light-5 {
+  background-color: #efef6a;
+}
+
+.bg-yellow-dark-5 {
+  background-color: #969610;
+}
+
+/* -6- */
+.text-yellow-light-6 {
+  color: #f1f17a;
+}
+
+.text-yellow-dark-6 {
+  color: #85850f;
+}
+
+.bg-yellow-light-6 {
+  background-color: #f1f17a;
+}
+
+.bg-yellow-dark-6 {
+  background-color: #85850f;
+}
+
+/* -7- */
+.text-yellow-light-7 {
+  color: #f2f28a;
+}
+
+.text-yellow-dark-7 {
+  color: #75750d;
+}
+
+.bg-yellow-light-7 {
+  background-color: #f2f28a;
+}
+
+.bg-yellow-dark-7 {
+  background-color: #75750d;
+}
+
+/* -8- */
+.text-yellow-light-8 {
+  color: #f4f49a;
+}
+
+.text-yellow-dark-8 {
+  color: #65650b;
+}
+
+.bg-yellow-light-8 {
+  background-color: #f4f49a;
+}
+
+.bg-yellow-dark-8 {
+  background-color: #65650b;
+}
+
+/* -9- */
+.text-yellow-light-9 {
+  color: #f6f6aa;
+}
+
+.text-yellow-dark-9 {
+  color: #555509;
+}
+
+.bg-yellow-light-9 {
+  background-color: #f6f6aa;
+}
+
+.bg-yellow-dark-9 {
+  background-color: #555509;
+}
+
+/*
+div {
+  &[class=green-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.green {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.green {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-green {
+  color: #19e635;
+}
+div .text-green:hover {
+  color: dark(#19e635, 70);
+}
+
+.bg-green {
+  background-color: #19e635;
+}
+.bg-green:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-green-light-1 {
+  color: #29e843;
+}
+
+.text-green-dark-1 {
+  color: #17d631;
+}
+
+.bg-green-light-1 {
+  background-color: #29e843;
+}
+
+.bg-green-dark-1 {
+  background-color: #17d631;
+}
+
+/* -2- */
+.text-green-light-2 {
+  color: #39ea51;
+}
+
+.text-green-dark-2 {
+  color: #16c62e;
+}
+
+.bg-green-light-2 {
+  background-color: #39ea51;
+}
+
+.bg-green-dark-2 {
+  background-color: #16c62e;
+}
+
+/* -3- */
+.text-green-light-3 {
+  color: #49eb5f;
+}
+
+.text-green-dark-3 {
+  color: #14b62a;
+}
+
+.bg-green-light-3 {
+  background-color: #49eb5f;
+}
+
+.bg-green-dark-3 {
+  background-color: #14b62a;
+}
+
+/* -4- */
+.text-green-light-4 {
+  color: #59ed6e;
+}
+
+.text-green-dark-4 {
+  color: #12a626;
+}
+
+.bg-green-light-4 {
+  background-color: #59ed6e;
+}
+
+.bg-green-dark-4 {
+  background-color: #12a626;
+}
+
+/* -5- */
+.text-green-light-5 {
+  color: #6aef7c;
+}
+
+.text-green-dark-5 {
+  color: #109622;
+}
+
+.bg-green-light-5 {
+  background-color: #6aef7c;
+}
+
+.bg-green-dark-5 {
+  background-color: #109622;
+}
+
+/* -6- */
+.text-green-light-6 {
+  color: #7af18a;
+}
+
+.text-green-dark-6 {
+  color: #0f851f;
+}
+
+.bg-green-light-6 {
+  background-color: #7af18a;
+}
+
+.bg-green-dark-6 {
+  background-color: #0f851f;
+}
+
+/* -7- */
+.text-green-light-7 {
+  color: #8af298;
+}
+
+.text-green-dark-7 {
+  color: #0d751b;
+}
+
+.bg-green-light-7 {
+  background-color: #8af298;
+}
+
+.bg-green-dark-7 {
+  background-color: #0d751b;
+}
+
+/* -8- */
+.text-green-light-8 {
+  color: #9af4a6;
+}
+
+.text-green-dark-8 {
+  color: #0b6517;
+}
+
+.bg-green-light-8 {
+  background-color: #9af4a6;
+}
+
+.bg-green-dark-8 {
+  background-color: #0b6517;
+}
+
+/* -9- */
+.text-green-light-9 {
+  color: #aaf6b4;
+}
+
+.text-green-dark-9 {
+  color: #095514;
+}
+
+.bg-green-light-9 {
+  background-color: #aaf6b4;
+}
+
+.bg-green-dark-9 {
+  background-color: #095514;
+}
+
+/*
+div {
+  &[class=orange-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.orange {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.orange {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-orange {
+  color: #ffa600;
+}
+div .text-orange:hover {
+  color: dark(#ffa600, 70);
+}
+
+.bg-orange {
+  background-color: #ffa600;
+}
+.bg-orange:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-orange-light-1 {
+  color: #ffac12;
+}
+
+.text-orange-dark-1 {
+  color: #ed9a00;
+}
+
+.bg-orange-light-1 {
+  background-color: #ffac12;
+}
+
+.bg-orange-dark-1 {
+  background-color: #ed9a00;
+}
+
+/* -2- */
+.text-orange-light-2 {
+  color: #ffb224;
+}
+
+.text-orange-dark-2 {
+  color: #db8f00;
+}
+
+.bg-orange-light-2 {
+  background-color: #ffb224;
+}
+
+.bg-orange-dark-2 {
+  background-color: #db8f00;
+}
+
+/* -3- */
+.text-orange-light-3 {
+  color: #ffb936;
+}
+
+.text-orange-dark-3 {
+  color: #c98300;
+}
+
+.bg-orange-light-3 {
+  background-color: #ffb936;
+}
+
+.bg-orange-dark-3 {
+  background-color: #c98300;
+}
+
+/* -4- */
+.text-orange-light-4 {
+  color: #ffbf47;
+}
+
+.text-orange-dark-4 {
+  color: #b87800;
+}
+
+.bg-orange-light-4 {
+  background-color: #ffbf47;
+}
+
+.bg-orange-dark-4 {
+  background-color: #b87800;
+}
+
+/* -5- */
+.text-orange-light-5 {
+  color: #ffc559;
+}
+
+.text-orange-dark-5 {
+  color: #a66c00;
+}
+
+.bg-orange-light-5 {
+  background-color: #ffc559;
+}
+
+.bg-orange-dark-5 {
+  background-color: #a66c00;
+}
+
+/* -6- */
+.text-orange-light-6 {
+  color: #ffcb6b;
+}
+
+.text-orange-dark-6 {
+  color: #946000;
+}
+
+.bg-orange-light-6 {
+  background-color: #ffcb6b;
+}
+
+.bg-orange-dark-6 {
+  background-color: #946000;
+}
+
+/* -7- */
+.text-orange-light-7 {
+  color: #ffd27d;
+}
+
+.text-orange-dark-7 {
+  color: #825500;
+}
+
+.bg-orange-light-7 {
+  background-color: #ffd27d;
+}
+
+.bg-orange-dark-7 {
+  background-color: #825500;
+}
+
+/* -8- */
+.text-orange-light-8 {
+  color: #ffd88f;
+}
+
+.text-orange-dark-8 {
+  color: #704900;
+}
+
+.bg-orange-light-8 {
+  background-color: #ffd88f;
+}
+
+.bg-orange-dark-8 {
+  background-color: #704900;
+}
+
+/* -9- */
+.text-orange-light-9 {
+  color: #ffdea1;
+}
+
+.text-orange-dark-9 {
+  color: #5e3d00;
+}
+
+.bg-orange-light-9 {
+  background-color: #ffdea1;
+}
+
+.bg-orange-dark-9 {
+  background-color: #5e3d00;
+}
+
+/*
+div {
+  &[class=purple-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.purple {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.purple {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-purple {
+  color: #9900ff;
+}
+div .text-purple:hover {
+  color: dark(#9900ff, 70);
+}
+
+.bg-purple {
+  background-color: #9900ff;
+}
+.bg-purple:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-purple-light-1 {
+  color: #a012ff;
+}
+
+.text-purple-dark-1 {
+  color: #8e00ed;
+}
+
+.bg-purple-light-1 {
+  background-color: #a012ff;
+}
+
+.bg-purple-dark-1 {
+  background-color: #8e00ed;
+}
+
+/* -2- */
+.text-purple-light-2 {
+  color: #a724ff;
+}
+
+.text-purple-dark-2 {
+  color: #8400db;
+}
+
+.bg-purple-light-2 {
+  background-color: #a724ff;
+}
+
+.bg-purple-dark-2 {
+  background-color: #8400db;
+}
+
+/* -3- */
+.text-purple-light-3 {
+  color: #ae36ff;
+}
+
+.text-purple-dark-3 {
+  color: #7900c9;
+}
+
+.bg-purple-light-3 {
+  background-color: #ae36ff;
+}
+
+.bg-purple-dark-3 {
+  background-color: #7900c9;
+}
+
+/* -4- */
+.text-purple-light-4 {
+  color: #b647ff;
+}
+
+.text-purple-dark-4 {
+  color: #6e00b8;
+}
+
+.bg-purple-light-4 {
+  background-color: #b647ff;
+}
+
+.bg-purple-dark-4 {
+  background-color: #6e00b8;
+}
+
+/* -5- */
+.text-purple-light-5 {
+  color: #bd59ff;
+}
+
+.text-purple-dark-5 {
+  color: #6300a6;
+}
+
+.bg-purple-light-5 {
+  background-color: #bd59ff;
+}
+
+.bg-purple-dark-5 {
+  background-color: #6300a6;
+}
+
+/* -6- */
+.text-purple-light-6 {
+  color: #c46bff;
+}
+
+.text-purple-dark-6 {
+  color: #590094;
+}
+
+.bg-purple-light-6 {
+  background-color: #c46bff;
+}
+
+.bg-purple-dark-6 {
+  background-color: #590094;
+}
+
+/* -7- */
+.text-purple-light-7 {
+  color: #cb7dff;
+}
+
+.text-purple-dark-7 {
+  color: #4e0082;
+}
+
+.bg-purple-light-7 {
+  background-color: #cb7dff;
+}
+
+.bg-purple-dark-7 {
+  background-color: #4e0082;
+}
+
+/* -8- */
+.text-purple-light-8 {
+  color: #d28fff;
+}
+
+.text-purple-dark-8 {
+  color: #430070;
+}
+
+.bg-purple-light-8 {
+  background-color: #d28fff;
+}
+
+.bg-purple-dark-8 {
+  background-color: #430070;
+}
+
+/* -9- */
+.text-purple-light-9 {
+  color: #d9a1ff;
+}
+
+.text-purple-dark-9 {
+  color: #39005e;
+}
+
+.bg-purple-light-9 {
+  background-color: #d9a1ff;
+}
+
+.bg-purple-dark-9 {
+  background-color: #39005e;
+}
+
+/*
+div {
+  &[class=gray-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.gray {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.gray {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-gray {
+  color: #808080;
+}
+div .text-gray:hover {
+  color: dark(#808080, 70);
+}
+
+.bg-gray {
+  background-color: #808080;
+}
+.bg-gray:hover {
+  opacity: 0.7;
+}
+
+/* -1- */
+.text-gray-light-1 {
+  color: #898989;
+}
+
+.text-gray-dark-1 {
+  color: #777777;
+}
+
+.bg-gray-light-1 {
+  background-color: #898989;
+}
+
+.bg-gray-dark-1 {
+  background-color: #777777;
+}
+
+/* -2- */
+.text-gray-light-2 {
+  color: #929292;
+}
+
+.text-gray-dark-2 {
+  color: #6e6e6e;
+}
+
+.bg-gray-light-2 {
+  background-color: #929292;
+}
+
+.bg-gray-dark-2 {
+  background-color: #6e6e6e;
+}
+
+/* -3- */
+.text-gray-light-3 {
+  color: #9b9b9b;
+}
+
+.text-gray-dark-3 {
+  color: #656565;
+}
+
+.bg-gray-light-3 {
+  background-color: #9b9b9b;
+}
+
+.bg-gray-dark-3 {
+  background-color: #656565;
+}
+
+/* -4- */
+.text-gray-light-4 {
+  color: #a4a4a4;
+}
+
+.text-gray-dark-4 {
+  color: #5c5c5c;
+}
+
+.bg-gray-light-4 {
+  background-color: #a4a4a4;
+}
+
+.bg-gray-dark-4 {
+  background-color: #5c5c5c;
+}
+
+/* -5- */
+.text-gray-light-5 {
+  color: #acacac;
+}
+
+.text-gray-dark-5 {
+  color: #535353;
+}
+
+.bg-gray-light-5 {
+  background-color: #acacac;
+}
+
+.bg-gray-dark-5 {
+  background-color: #535353;
+}
+
+/* -6- */
+.text-gray-light-6 {
+  color: #b5b5b5;
+}
+
+.text-gray-dark-6 {
+  color: #4a4a4a;
+}
+
+.bg-gray-light-6 {
+  background-color: #b5b5b5;
+}
+
+.bg-gray-dark-6 {
+  background-color: #4a4a4a;
+}
+
+/* -7- */
+.text-gray-light-7 {
+  color: #bebebe;
+}
+
+.text-gray-dark-7 {
+  color: #414141;
+}
+
+.bg-gray-light-7 {
+  background-color: #bebebe;
+}
+
+.bg-gray-dark-7 {
+  background-color: #414141;
+}
+
+/* -8- */
+.text-gray-light-8 {
+  color: #c7c7c7;
+}
+
+.text-gray-dark-8 {
+  color: #383838;
+}
+
+.bg-gray-light-8 {
+  background-color: #c7c7c7;
+}
+
+.bg-gray-dark-8 {
+  background-color: #383838;
+}
+
+/* -9- */
+.text-gray-light-9 {
+  color: #d0d0d0;
+}
+
+.text-gray-dark-9 {
+  color: #2f2f2f;
+}
+
+.bg-gray-light-9 {
+  background-color: #d0d0d0;
+}
+
+.bg-gray-dark-9 {
+  background-color: #2f2f2f;
+}
+
+/*
+div {
+  &[class=black-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.black {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.black {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-black {
+  color: black;
+}
+div .text-black:hover {
+  color: dark(black, 70);
+}
+
+.bg-black {
+  background-color: black;
+}
+.bg-black:hover {
+  opacity: 0.7;
+}
+
+/*
+div {
+  &[class=white-hover] {
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+*/
+/*
+.white {
+  $h: $hue;
+  &.hover {
+    &:hover {
+      opacity: 0.5;
+      // background-color: mix(white, $val, 0.4);
+    }
+  }
+  color: hsl(0%, 0%, ($light - $threshold * -100%)) !important;
+  background-color: hsl($hue, $sat * 1%, $light * 1%);
+}
+*/
+/*
+.white {
+  // if class contains "hover" with "primary" for example do this hover action
+  &.hover {
+    &:hover {
+      background-color: $val;
+    }
+  }
+}
+*/
+/* main */
+div .text-white {
+  color: white;
+}
+div .text-white:hover {
+  color: dark(white, 70);
+}
+
+.bg-white {
+  background-color: white;
+}
+.bg-white:hover {
+  opacity: 0.7;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: 0.75rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.p-4 {
+  padding: 4.5rem;
+}
+
+.p-5 {
+  padding: 6rem;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pl-1 {
+  padding-left: 0.75rem;
+}
+
+.pl-2 {
+  padding-left: 1.5rem;
+}
+
+.pl-3 {
+  padding-left: 3rem;
+}
+
+.pl-4 {
+  padding-left: 4.5rem;
+}
+
+.pl-5 {
+  padding-left: 6rem;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
+.pr-1 {
+  padding-right: 0.75rem;
+}
+
+.pr-2 {
+  padding-right: 1.5rem;
+}
+
+.pr-3 {
+  padding-right: 3rem;
+}
+
+.pr-4 {
+  padding-right: 4.5rem;
+}
+
+.pr-5 {
+  padding-right: 6rem;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.pt-1 {
+  padding-top: 0.75rem;
+}
+
+.pt-2 {
+  padding-top: 1.5rem;
+}
+
+.pt-3 {
+  padding-top: 3rem;
+}
+
+.pt-4 {
+  padding-top: 4.5rem;
+}
+
+.pt-5 {
+  padding-top: 6rem;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.pb-1 {
+  padding-bottom: 0.75rem;
+}
+
+.pb-2 {
+  padding-bottom: 1.5rem;
+}
+
+.pb-3 {
+  padding-bottom: 3rem;
+}
+
+.pb-4 {
+  padding-bottom: 4.5rem;
+}
+
+.pb-5 {
+  padding-bottom: 6rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-1 {
+  margin: 0.75rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 3rem;
+}
+
+.m-4 {
+  margin: 4.5rem;
+}
+
+.m-5 {
+  margin: 6rem;
+}
+
+.ml-0 {
+  margin-left: 0;
+}
+
+.ml-1 {
+  margin-left: 0.75rem;
+}
+
+.ml-2 {
+  margin-left: 1.5rem;
+}
+
+.ml-3 {
+  margin-left: 3rem;
+}
+
+.ml-4 {
+  margin-left: 4.5rem;
+}
+
+.ml-5 {
+  margin-left: 6rem;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+.mr-1 {
+  margin-right: 0.75rem;
+}
+
+.mr-2 {
+  margin-right: 1.5rem;
+}
+
+.mr-3 {
+  margin-right: 3rem;
+}
+
+.mr-4 {
+  margin-right: 4.5rem;
+}
+
+.mr-5 {
+  margin-right: 6rem;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: 0.75rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.mt-4 {
+  margin-top: 4.5rem;
+}
+
+.mt-5 {
+  margin-top: 6rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 4.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 6rem;
+}
+
+.o-10 {
+  opacity: 0.1;
+}
+
+.o-20 {
+  opacity: 0.2;
+}
+
+.o-30 {
+  opacity: 0.3;
+}
+
+.o-40 {
+  opacity: 0.4;
+}
+
+.o-50 {
+  opacity: 0.5;
+}
+
+.o-60 {
+  opacity: 0.6;
+}
+
+.o-70 {
+  opacity: 0.7;
+}
+
+.o-80 {
+  opacity: 0.8;
+}
+
+.o-90 {
+  opacity: 0.9;
+}
+
+.o-100 {
+  opacity: 1;
+}
+
+.br {
+  border-radius: 1rem;
+}
+
+.br-none {
+  border-radius: 0;
+}
+
+.br-xs {
+  border-radius: 0.25rem;
+}
+
+.br-sm {
+  border-radius: 0.5rem;
+}
+
+.br-lg {
+  border-radius: 2rem;
+}
+
+.br-full {
+  border-radius: 50%;
+}
+
+.display-n {
+  display: none;
+}
+
+.display-b {
+  display: block;
+}
+
+.display-f {
+  display: flex;
+}
+
+.display-i {
+  display: inline;
+}
+
+.display-i-b {
+  display: inline-block;
+}
+
+.font-def {
+  font-size: 1rem;
+}
+
+.font-sm {
+  font-size: 1.35rem;
+}
+
+.font-md {
+  font-size: 1.65rem;
+}
+
+.font-lg {
+  font-size: 2rem;
+}
+
+.font-xl {
+  font-size: 3rem;
+}
+
+.font-xxl {
+  font-size: 3.5rem;
+}
+
+.t-align-c {
+  text-align: center;
+}
+
+.t-align-r {
+  text-align: right;
+}
+
+.t-align-l {
+  text-align: left;
+}
+
+/* reset styles */
+* {
+  color: inherit;
+  margin: 0;
+}
+
+body {
+  font-family: Poppins;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dotted #efefef;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 span {
+  color: #fa0;
+}
+
+.parent {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #efaeef;
+}
+.parent .son {
+  color: #aaa;
+}
+.parent .child {
+  color: #aaa;
+}
+
+/* Divs */
+.pops {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* How Compile these Files ?*/
+/*
+  _base use vairables, but in this files there is no declartion variables at all!
+  so how _base use these variables which not valid in wihtin file _base?
+
+  Try make @import "_base" first line?
+  Yeah, it will throw an Error, tell us the variables used not declared!
+  so how _base doesn't give us same error when it second line for example or after our framework?
+
+  because it compile step by step, and _base depend on previous statment
+  first execute "kura-framework" which contains "variables" then execute "_base"
+
+  so the order is matter(neccessary)
+
+
+  */
