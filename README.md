@@ -15,7 +15,7 @@ function build_styles() {
 }
 
 function watch_files() {
-  watch(["scss/**/*.scss"], build_styles);
+  watch(["scss/**/*.scss", "*.html"], build_styles);
   // => /**/ means any subfolder as well if found
 }
 
